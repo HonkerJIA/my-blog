@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<!--
+  ========================================
+  拾光集 · 个人空间 - 首页 HTML 文件
+  ========================================
+  作者: 林一
+  功能: 个人博客网站，包含简介、笔记、文章、视频、登录注册等功能
+  技术: HTML5 + CSS3 + JavaScript (原生)
+  ========================================
+-->
+<html lang="zh">
+<head>
+  <!-- 字符编码设置，确保中文正常显示 -->
+  <meta charset="UTF-8">
+  <!-- 响应式视口配置，适配移动端和桌面端 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 页面标题 -->
+  <title>拾光集 · 个人空间</title>
+
+  <!-- 字体与图标库 (免费 CDN) -->
+  <!-- Google Fonts: Inter 字体，用于正文和 UI 文字 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6.0 图标库，提供丰富的图标资源 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- 外部CSS文件，存放所有样式 -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!--
+    ================= 主容器 =================
+    整个应用的根容器，包含所有页面内容
+  -->
+  <div class="app">
+    <!--
+      ================= 顶部导航栏 =================
+      固定在页面顶部，包含 Logo、导航链接、用户状态
+    -->
+    <header class="header">
+      <!-- 导航区域 -->
+      <nav class="nav">
+        <!-- 网站 Logo + 名称 -->
+        <div class="logo">
+          <!-- 指南针图标，代表"拾光"的概念 -->
+          <i class="fas fa-compass" style="margin-right: 8px;"></i>拾光集
+        </div>
+
+        <!-- 导航链接列表 -->
+        <ul class="nav-links">
+          <!-- data-page 属性用于 JavaScript 页面切换识别 -->
+          <li><a class="nav-link active" data-page="profile"><i class="fas fa-user"></i>简介</a></li>
+          <li><a class="nav-link" data-page="notes"><i class="fas fa-pen"></i>个人笔记</a></li>
+          <li><a class="nav-link" data-page="articles"><i class="fas fa-newspaper"></i>文章分享</a></li>
+          <li><a class="nav-link" data-page="videos"><i class="fas fa-video"></i>视频集锦</a></li>
+          <li><a class="nav-link" data-page="auth"><i class="fas fa-key"></i>登录注册</a></li>
+        </ul>
+
+        <!-- 用户状态徽章，显示登录状态 -->
+        <div class="user-badge" id="userBadge">未登录</div>
+      </nav>
+    </header>
+
+    <!--
+      ================= 主内容区域 =================
+      包含五个独立页面，通过 JavaScript 控制显示/隐藏
+      每次只显示一个页面（由 .active-page 类控制）
+    -->
+    <main class="main" id="mainContent">
+
+      <!--
+        ----------------------------------------
+        页面 1: 简介/个人资料页面
+        ----------------------------------------
+        显示用户头像、个人信息、统计数据、技能卡片
+      -->
+      <section id="profile-page" class="page active-page">
+        <!-- 个人资料头部区域 -->
+        <div class="profile-header">
+          <!-- 大头像区域 (使用 Font Awesome 图标作为占位) -->
+          <div class="avatar-large">
+            <i class="fas fa-user-astronaut"></i>
+          </div>
+
+          <!-- 个人基本信息 -->
+          <div class="profile-info">
+            <h2>林一 · 个人空间</h2>
+            <!-- 个人简介/座右铭 -->
+            <p class="profile-bio">全栈开发者 / 笔记爱好者 / 乐于分享</p>
+            <p>这里记录了我的学习笔记、技术文章、喜欢的视频，以及一些生活随想。希望与你共同成长。</p>
+
+            <!-- 统计数据展示区域 -->
+            <div class="stat-list">
+              <!-- 笔记数量统计 -->
+              <div class="stat-item"><span class="stat-number">28</span><div class="stat-label">笔记</div></div>
+              <!-- 文章数量统计 -->
+              <div class="stat-item"><span class="stat-number">15</span><div class="stat-label">文章</div></div>
+              <!-- 视频数量统计 -->
+              <div class="stat-item"><span class="stat-number">12</span><div class="stat-label">视频</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- "关于我" 标题区 -->
+        <div class="page-title"><i class="fas fa-heart"></i> 关于我</div>
+
+        <!-- 功能/技能卡片网格 -->
+        <div class="card-grid">
+          <!-- 技术栈卡片 -->
+          <div class="card">
+            <div class="card-icon"><i class="fas fa-code"></i></div>
+            <h3>技术栈</h3>
+            <p>JavaScript / React / Node / Python · 正在探索AI编程</p>
+          </div>
+          <!-- 写作方向卡片 -->
+          <div class="card">
+            <div class="card-icon"><i class="fas fa-feather"></i></div>
+            <h3>写作方向</h3>
+            <p>前端技巧、工具教程、学习心得、读书笔记</p>
+          </div>
+          <!-- 近期目标卡片 -->
+          <div class="card">
+            <div class="card-icon"><i class="fas fa-bolt"></i></div>
+            <h3>近期目标</h3>
+            <p>用AI工具做一个完整的作品集网站</p>
+          </div>
+        </div>
+      </section>
+
+      <!--
+        ----------------------------------------
+        页面 2: 个人笔记页面
+        ----------------------------------------
+        展示随手记录的笔记内容，按时间倒序排列
+      -->
+      <section id="notes-page" class="page">
+        <!-- 页面标题 -->
+        <div class="page-title"><i class="fas fa-pen-fancy"></i> 个人笔记 · 随手记录</div>
+
+        <!-- 笔记列表项 1 -->
+        <div class="note-item">
+          <h4>📘 文心快码使用技巧</h4>
+          <p>用Plan模式出方案，用Agent模式执行，可以大幅提升效率。开启自动执行后更省心...</p>
+          <!-- 元信息：日期和标签 -->
+          <div class="meta"><span>2026-03-10</span><span class="tag">AI工具</span></div>
+        </div>
+
+        <!-- 笔记列表项 2 -->
+        <div class="note-item">
+          <h4>📗 HTML/CSS 布局小记</h4>
+          <p>Grid 和 Flex 搭配使用，实现复杂响应式布局。记录常用套路和避坑指南...</p>
+          <div class="meta"><span>2026-03-08</span><span class="tag">前端</span></div>
+        </div>
+
+        <!-- 笔记列表项 3 -->
+        <div class="note-item">
+          <h4>📙 部署博客的几种方式</h4>
+          <p>GitHub Pages、Vercel、Netlify 对比。个人最推荐 GitHub Pages+Hexo 免费方案。</p>
+          <div class="meta"><span>2026-03-05</span><span class="tag">部署</span></div>
+        </div>
+
+        <!-- 笔记列表项 4 -->
+        <div class="note-item">
+          <h4>📕 关于写作的思考</h4>
+          <p>写笔记不是为了给别人看，而是给未来的自己看。坚持记录，会有复利。</p>
+          <div class="meta"><span>2026-03-01</span><span class="tag">随笔</span></div>
+        </div>
+      </section>
+
+      <!--
+        ----------------------------------------
+        页面 3: 文章分享页面
+        ----------------------------------------
+        展示精心撰写的文章，带有阅读量统计
+      -->
+      <section id="articles-page" class="page">
+        <div class="page-title"><i class="fas fa-share-alt"></i> 文章分享 · 值得一读</div>
+
+        <!-- 文章项 1 -->
+        <div class="article-item">
+          <h4>🔗 给初学者的AI编程指南</h4>
+          <p>如何利用AI工具从零开始做网站？本文分享我的实践经验和工具推荐。</p>
+          <!-- 元信息：阅读量、日期、标签 -->
+          <div class="meta"><span>阅读 234</span><span>2026-03-09</span><span class="tag">AI</span></div>
+        </div>
+
+        <!-- 文章项 2 -->
+        <div class="article-item">
+          <h4>🔗 2026年前端趋势观察</h4>
+          <p>AI工具、RSC、元框架…哪些值得关注？整理自多个技术峰会。</p>
+          <div class="meta"><span>阅读 158</span><span>2026-03-06</span><span class="tag">前端</span></div>
+        </div>
+
+        <!-- 文章项 3 -->
+        <div class="article-item">
+          <h4>🔗 用Hexo + GitHub Pages免费搭博客</h4>
+          <p>超详细图文教程，小白也能半小时上线自己的博客。</p>
+          <div class="meta"><span>阅读 89</span><span>2026-03-02</span><span class="tag">教程</span></div>
+        </div>
+
+        <!-- 文章项 4 -->
+        <div class="article-item">
+          <h4>🔗 如何坚持写笔记？我的5个方法</h4>
+          <p>从"坚持不了"到"不写难受"，分享我的习惯养成经验。</p>
+          <div class="meta"><span>阅读 112</span><span>2026-02-28</span><span class="tag">成长</span></div>
+        </div>
+      </section>
+
+      <!--
+        ----------------------------------------
+        页面 4: 视频集锦页面
+        ----------------------------------------
+        以卡片网格形式展示视频内容
+      -->
+      <section id="videos-page" class="page">
+        <div class="page-title"><i class="fas fa-play-circle"></i> 视频集锦 · 视觉存档</div>
+
+        <!-- 视频卡片网格容器 -->
+        <div class="video-grid">
+          <!-- 视频卡片 1: 旅行 -->
+          <div class="video-card">
+            <!-- 视频封面/缩略图 -->
+            <div class="video-thumb"><i class="fas fa-play" style="color: #2563eb;"></i> 旅行 · 大理</div>
+            <!-- 视频信息 -->
+            <div class="video-info">
+              <h4>洱海日落延时</h4>
+              <div class="video-meta"><span>03:24</span><span>2026-02-20</span></div>
+            </div>
+          </div>
+
+          <!-- 视频卡片 2: 技术 -->
+          <div class="video-card">
+            <div class="video-thumb"><i class="fas fa-play" style="color: #2563eb;"></i> 技术 · 调试</div>
+            <div class="video-info">
+              <h4>VS Code 调试技巧</h4>
+              <div class="video-meta"><span>12:08</span><span>2026-02-15</span></div>
+            </div>
+          </div>
+
+          <!-- 视频卡片 3: 生活 -->
+          <div class="video-card">
+            <div class="video-thumb"><i class="fas fa-play" style="color: #2563eb;"></i> 生活 · 咖啡</div>
+            <div class="video-info">
+              <h4>手冲咖啡日常</h4>
+              <div class="video-meta"><span>05:32</span><span>2026-02-10</span></div>
+            </div>
+          </div>
+
+          <!-- 视频卡片 4: 读书 -->
+          <div class="video-card">
+            <div class="video-thumb"><i class="fas fa-play" style="color: #2563eb;"></i> 读书 · 记录</div>
+            <div class="video-info">
+              <h4>3月书单分享</h4>
+              <div class="video-meta"><span>08:17</span><span>2026-03-01</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!--
+        ----------------------------------------
+        页面 5: 登录注册页面
+        ----------------------------------------
+        包含登录和注册两个表单，通过 Tab 切换
+      -->
+      <section id="auth-page" class="page">
+        <!-- 认证容器 -->
+        <div class="auth-container">
+          <!-- Tab 切换按钮 -->
+          <div class="tabs" id="authTabs">
+            <button class="tab active" id="loginTab">登录</button>
+            <button class="tab" id="registerTab">注册</button>
+          </div>
+
+          <!-- 登录表单 (默认显示) -->
+          <form id="loginForm" class="auth-form">
+            <!-- 邮箱输入组 -->
+            <div class="input-group">
+              <label>邮箱</label>
+              <input type="email" id="loginEmail" placeholder="your@email.com" required>
+            </div>
+            <!-- 密码输入组 -->
+            <div class="input-group">
+              <label>密码</label>
+              <input type="password" id="loginPassword" placeholder="******" required>
+            </div>
+            <!-- 提交按钮 -->
+            <button type="submit" class="btn">登录</button>
+            <!-- 表单消息提示区域 -->
+            <p class="form-message" id="loginMessage"></p>
+          </form>
+
+          <!-- 注册表单 (默认隐藏) -->
+          <form id="registerForm" class="auth-form hidden">
+            <!-- 昵称输入组 -->
+            <div class="input-group">
+              <label>昵称</label>
+              <input type="text" id="regName" placeholder="如何称呼你" required>
+            </div>
+            <!-- 邮箱输入组 -->
+            <div class="input-group">
+              <label>邮箱</label>
+              <input type="email" id="regEmail" placeholder="your@email.com" required>
+            </div>
+            <!-- 密码输入组 -->
+            <div class="input-group">
+              <label>密码</label>
+              <input type="password" id="regPassword" placeholder="至少6位" required minlength="6">
+            </div>
+            <!-- 提交按钮 -->
+            <button type="submit" class="btn">注册</button>
+            <!-- 表单消息提示区域 -->
+            <p class="form-message" id="registerMessage"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!--
+      ================= 底部页脚 =================
+      显示版权信息
+    -->
+    <footer class="footer">
+      <p>© 2026 拾光集 · 记录与分享</p>
+    </footer>
+  </div>
+
+  <!-- 外部JavaScript文件，存放交互逻辑 -->
+  <script src="top1.js"></script>
+</body>
+</html>
